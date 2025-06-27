@@ -51,6 +51,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autofocus
             autocomplete="name"
             :placeholder="__('Full name')"
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <!-- Email Address -->
@@ -61,6 +62,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             required
             autocomplete="email"
             placeholder="email@example.com"
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <!-- Password -->
@@ -72,6 +74,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="new-password"
             :placeholder="__('Password')"
             viewable
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <!-- Confirm Password -->
@@ -83,10 +86,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autocomplete="new-password"
             :placeholder="__('Confirm password')"
             viewable
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button type="submit" variant="primary" class="w-full py-3 text-lg dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-white dark:shadow-lg">
                 {{ __('Create account') }}
             </flux:button>
         </div>

@@ -69,7 +69,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 }; ?>
 
 <div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Reset password')" :description="__('Please enter your new password below')" />
+    <x-auth-header :title="'Reset Kata Sandi'" :description="'Silakan masukkan kata sandi baru Anda di bawah ini'" />
 
     <!-- Session Status -->
     <x-auth-session-status class="text-center" :status="session('status')" />
@@ -78,37 +78,40 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <!-- Email Address -->
         <flux:input
             wire:model="email"
-            :label="__('Email')"
+            :label="'Alamat Email'"
             type="email"
             required
             autocomplete="email"
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <!-- Password -->
         <flux:input
             wire:model="password"
-            :label="__('Password')"
+            :label="'Kata Sandi Baru'"
             type="password"
             required
             autocomplete="new-password"
-            :placeholder="__('Password')"
+            :placeholder="'Kata Sandi baru'"
             viewable
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <!-- Confirm Password -->
         <flux:input
             wire:model="password_confirmation"
-            :label="__('Confirm password')"
+            :label="'Konfirmasi Kata Sandi'"
             type="password"
             required
             autocomplete="new-password"
-            :placeholder="__('Confirm password')"
+            :placeholder="'Konfirmasi kata sandi'"
             viewable
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
-                {{ __('Reset password') }}
+            <flux:button type="submit" variant="primary" class="w-full py-3 text-lg dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-white dark:shadow-lg">
+                {{ 'Reset kata sandi' }}
             </flux:button>
         </div>
     </form>

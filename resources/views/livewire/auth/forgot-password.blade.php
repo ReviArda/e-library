@@ -38,9 +38,10 @@ new #[Layout('components.layouts.auth')] class extends Component {
             autofocus
             placeholder="email@example.com"
             viewable
+            class="dark:bg-[#232946] dark:text-white dark:border-[#6366f1] dark:placeholder:text-zinc-400"
         />
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Email password reset link') }}</flux:button>
+        <flux:button variant="primary" type="submit" class="w-full py-3 text-lg dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-white dark:shadow-lg">{{ __('Email password reset link') }}</flux:button>
     </form>
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-400">

@@ -1,52 +1,132 @@
 <x-layouts.app>
-<div class="max-w-md mx-auto py-10">
-    <h1 class="text-2xl font-bold mb-6 text-left">Tambah Buku</h1>
-    <div class="bg-white dark:bg-zinc-900 rounded-xl shadow border border-gray-200 p-8">
+<style>
+    body {
+        background: linear-gradient(135deg, #181c2a 0%, #232946 100%) !important;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+    }
+    .glass-form {
+        background: rgba(30,34,54,0.68);
+        border-radius: 28px;
+        box-shadow: 0 8px 40px 0 rgba(30,34,54,0.22);
+        backdrop-filter: blur(14px) saturate(140%);
+        border: 1.5px solid rgba(120,130,200,0.13);
+        padding: 10px 8px 8px 8px;
+        transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .glass-form:hover {
+        box-shadow: 0 16px 48px 0 rgba(99,102,241,0.18);
+        transform: translateY(-2px) scale(1.01);
+    }
+    .glass-input, .glass-textarea {
+        background: rgba(49,54,80,0.65);
+        border-radius: 12px;
+        border: 1.2px solid rgba(120,130,200,0.13);
+        color: #fff;
+        box-shadow: 0 2px 12px 0 rgba(99,102,241,0.08);
+        padding: 10px 16px;
+        font-size: 1rem;
+        transition: box-shadow 0.18s, border 0.18s, background 0.18s;
+    }
+    .glass-input:focus, .glass-textarea:focus {
+        border-color: #6366f1;
+        background: rgba(99,102,241,0.13);
+        box-shadow: 0 4px 24px 0 rgba(99,102,241,0.18);
+        outline: none;
+    }
+    .glass-label {
+        color: #a5b4fc;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        display: block;
+    }
+    .glass-btn {
+        background: rgba(49,54,80,0.65);
+        border-radius: 14px;
+        border: 1.2px solid rgba(120,130,200,0.13);
+        color: #fff;
+        font-weight: 600;
+        transition: background 0.18s, border 0.18s, box-shadow 0.18s;
+        box-shadow: 0 2px 12px 0 rgba(99,102,241,0.08);
+        padding: 10px 28px;
+        font-size: 1rem;
+    }
+    .glass-btn:hover {
+        background: #6366f1;
+        color: #fff;
+        box-shadow: 0 4px 24px 0 rgba(99,102,241,0.18);
+    }
+    .glass-btn.secondary {
+        background: rgba(30,34,54,0.68);
+        color: #a5b4fc;
+    }
+    .glass-btn.secondary:hover {
+        background: rgba(99,102,241,0.13);
+        color: #fff;
+    }
+    @media (max-width: 700px) {
+        .glass-form { border-radius: 14px; padding: 6px 2px 4px 2px; }
+        .glass-input, .glass-textarea { font-size: 0.95rem; padding: 8px 8px; }
+        .glass-btn { font-size: 0.95rem; padding: 10px 10px; }
+    }
+    .meteor-bg {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+    }
+</style>
+<canvas class="meteor-bg"></canvas>
+<div class="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto py-10 px-2 sm:px-4 relative z-10">
+    <h1 class="text-2xl font-bold mb-3 text-left text-white">Tambah Buku</h1>
+    <div class="glass-form">
         <form action="{{ route('books.store') }}" method="POST" class="space-y-5">
             @csrf
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Judul</label>
-                <input type="text" name="title" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('title') }}" required>
-                @error('title')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Judul</label>
+                <input type="text" name="title" class="w-full glass-input" value="{{ old('title') }}" required>
+                @error('title')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Penulis</label>
-                <input type="text" name="author" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('author') }}" required>
-                @error('author')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Penulis</label>
+                <input type="text" name="author" class="w-full glass-input" value="{{ old('author') }}" required>
+                @error('author')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Tahun</label>
-                <input type="number" name="year" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('year') }}">
-                @error('year')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Tahun</label>
+                <input type="number" name="year" class="w-full glass-input" value="{{ old('year') }}">
+                @error('year')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Penerbit</label>
-                <input type="text" name="publisher" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('publisher') }}">
-                @error('publisher')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Penerbit</label>
+                <input type="text" name="publisher" class="w-full glass-input" value="{{ old('publisher') }}">
+                @error('publisher')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Cover (URL)</label>
-                <input type="text" name="cover" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('cover') }}">
-                @error('cover')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Cover (URL)</label>
+                <input type="text" name="cover" class="w-full glass-input" value="{{ old('cover') }}">
+                @error('cover')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Stok</label>
-                <input type="number" name="stock" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('stock', 0) }}" min="0" required>
-                @error('stock')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Stok</label>
+                <input type="number" name="stock" class="w-full glass-input" value="{{ old('stock', 0) }}" min="0" required>
+                @error('stock')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Genre</label>
-                <input type="text" name="genre" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800" value="{{ old('genre') }}">
-                @error('genre')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Genre</label>
+                <input type="text" name="genre" class="w-full glass-input" value="{{ old('genre') }}">
+                @error('genre')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div>
-                <label class="block font-medium mb-1 text-gray-900 dark:text-gray-100">Deskripsi</label>
-                <textarea name="description" rows="3" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 dark:text-gray-100 bg-white dark:bg-zinc-800">{{ old('description') }}</textarea>
-                @error('description')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                <label class="glass-label">Deskripsi</label>
+                <textarea name="description" rows="3" class="w-full glass-textarea">{{ old('description') }}</textarea>
+                @error('description')<div class="text-red-400 text-sm mt-1">{{ $message }}</div>@enderror
             </div>
             <div class="flex gap-2 justify-end">
-                <a href="{{ route('books.index') }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Batal</a>
-                <button type="submit" class="px-5 py-2 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">Simpan</button>
+                <a href="{{ route('books.index') }}" class="glass-btn secondary">Batal</a>
+                <button type="submit" class="glass-btn">Simpan</button>
             </div>
         </form>
     </div>
