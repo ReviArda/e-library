@@ -37,6 +37,15 @@
 }
 
 @layer base {
+  html, body {
+    font-family: 'Inter', 'Poppins', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif !important;
+    background: linear-gradient(135deg, #181c2a 0%, #232946 100%) !important;
+    color-scheme: dark;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Poppins', 'Inter', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif !important;
+    letter-spacing: 0.01em;
+  }
 
     *,
     ::after,
@@ -45,6 +54,38 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
+}
+
+@layer components {
+  .neon-btn {
+    @apply bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white font-bold rounded-xl shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-pink-400;
+    box-shadow: 0 0 8px #6366f1, 0 0 16px #ec4899, 0 0 2px #a21caf;
+  }
+  .glass-card {
+    @apply bg-black/60 rounded-2xl shadow-xl backdrop-blur border border-indigo-900/20 transition-all duration-200;
+  }
+  .glass-card:hover {
+    @apply shadow-2xl scale-105;
+    box-shadow: 0 0 16px #6366f1, 0 0 32px #ec4899;
+  }
+  .neon-border {
+    box-shadow: 0 0 0 2px #6366f1, 0 0 12px #ec4899, 0 0 24px #a21caf;
+  }
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.7s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  .slide-up {
+    opacity: 0;
+    transform: translateY(32px);
+    animation: slideUp 0.7s cubic-bezier(.4,2,.6,1) forwards;
+  }
+  @keyframes slideUp {
+    to { opacity: 1; transform: none; }
+  }
 }
 
 [data-flux-field]:not(ui-radio, ui-checkbox) {

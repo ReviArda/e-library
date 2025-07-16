@@ -18,11 +18,11 @@
         box-shadow: 0 8px 32px 0 rgba(30,34,54,0.18);
         backdrop-filter: blur(12px) saturate(140%);
         border: 1.2px solid rgba(120,130,200,0.13);
-        transition: box-shadow 0.18s, transform 0.18s;
+        transition: box-shadow 0.18s;
     }
     .glass-book:hover {
-        box-shadow: 0 16px 48px 0 rgba(99,102,241,0.18);
-        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 12px 32px 0 rgba(99,102,241,0.13);
+        /* Hilangkan transform dan efek hover berlebihan */
     }
     .glass-action {
         background: rgba(49,54,80,0.65);
@@ -151,6 +151,30 @@
         border-color: #f472b6;
         background: rgba(49,54,80,0.82);
     }
+    .book-title-link {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.18s;
+    }
+    .book-title-link::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0; bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(90deg, #6366f1 60%, #a5b4fc 100%);
+        border-radius: 2px;
+        transition: width 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    .book-title-link:hover {
+        color: #a5b4fc;
+    }
+    .book-title-link:hover::after {
+        width: 100%;
+    }
     @media (max-width: 700px) {
         .glass-book { border-radius: 16px; }
         .glass-fab { width: 56px !important; height: 56px !important; }
@@ -194,19 +218,15 @@
     @endif
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         @forelse($books as $book)
-        <div class="glass-book flex flex-col overflow-hidden hover:shadow-xl group relative">
+        <div class="glass-book flex flex-col overflow-hidden group relative">
             <div class="relative w-full h-72 bg-zinc-800 flex items-center justify-center overflow-hidden ring-1 ring-zinc-800">
                 <div class="absolute top-3 left-3 flex flex-col gap-2 z-10">
-                    @if($book->genre)
-                        <span class="book-badge genre">{{ $book->genre }}</span>
-                    @endif
+                    {{-- Badge genre dihapus --}}
                     @if($book->created_at && $book->created_at->gt(now()->subDays(7)))
                         <span class="book-badge baru">Baru</span>
                     @endif
                 </div>
-                @if($book->year)
-                    <span class="absolute top-3 right-3 book-badge year z-10">{{ $book->year }}</span>
-                @endif
+                {{-- Badge tahun dihapus --}}
                 @if(auth()->check())
                     @php $isFav = auth()->user()->favorites->where('book_id', $book->id)->count() > 0; @endphp
                     <form method="POST" action="{{ $isFav ? route('favorites.destroy', $book) : route('favorites.store', $book) }}" class="absolute bottom-3 right-3 z-10">
@@ -228,7 +248,7 @@
                 @endif
             </div>
             <div class="p-6 flex-1 flex flex-col">
-                <a href="{{ route('books.show', $book) }}" class="font-bold text-xl text-white leading-tight mb-1 truncate hover:underline">{{ $book->title }}</a>
+                <a href="{{ route('books.show', $book) }}" class="book-title-link font-bold text-xl text-white leading-tight mb-1 truncate">{{ $book->title }}</a>
                 <div class="text-zinc-400 text-sm italic mb-1 truncate">{{ $book->author }}</div>
                 <div class="flex items-center gap-1 mb-4">
                     <span class="book-rating">★</span>

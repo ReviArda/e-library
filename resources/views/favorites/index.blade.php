@@ -73,16 +73,46 @@
         pointer-events: none;
     }
     .glass-header {
-        background: rgba(30,34,54,0.68);
-        border-radius: 20px;
-        box-shadow: 0 4px 24px 0 rgba(30,34,54,0.13);
-        backdrop-filter: blur(10px) saturate(120%);
-        border: 1.2px solid rgba(120,130,200,0.10);
-        padding: 1.5rem 2rem 1.2rem 2rem;
-        margin-bottom: 2rem;
+        background: rgba(30,34,54,0.82);
+        border-radius: 24px;
+        box-shadow: 0 6px 32px 0 rgba(99,102,241,0.10);
+        backdrop-filter: blur(14px) saturate(140%);
+        border: 1.5px solid rgba(120,130,200,0.13);
+        padding: 2rem 2.5rem 1.5rem 2.5rem;
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+    .fav-header-icon {
+        background: linear-gradient(135deg, #6366f1 60%, #ec4899 100%);
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 16px 0 #6366f1cc;
+    }
+    .fav-header-title {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: 0.01em;
+        text-shadow: 0 0 8px #6366f1, 0 0 16px #ec4899, 0 0 2px #a21caf;
+        margin-bottom: 0.1rem;
+        line-height: 1.1;
+    }
+    .fav-header-desc {
+        color: #a5b4fc;
+        font-size: 1.08rem;
+        margin-bottom: 0;
+        font-weight: 500;
     }
     @media (max-width: 700px) {
-        .glass-header { padding: 1rem 0.7rem; border-radius: 12px; }
+        .glass-header { padding: 1.2rem 0.7rem; border-radius: 14px; flex-direction: column; align-items: flex-start; gap: 10px; }
+        .fav-header-icon { width: 40px; height: 40px; }
+        .fav-header-title { font-size: 1.3rem; }
     }
     .book-badge {
         font-weight: 500;
@@ -100,29 +130,87 @@
     .book-badge.genre { color: #be185d; border-color: #f9a8d4cc; }
     .book-badge.year { color: #1e40af; border-color: #93c5fdcc; }
     .book-badge.baru { color: #166534; border-color: #6ee7b7cc; animation: pulse 1.5s infinite; }
+    .glass-book {
+        background: rgba(30,34,54,0.68);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px 0 rgba(30,34,54,0.18);
+        backdrop-filter: blur(12px) saturate(140%);
+        border: 1.2px solid rgba(120,130,200,0.13);
+        transition: box-shadow 0.18s;
+    }
+    .glass-book:hover {
+        box-shadow: 0 12px 32px 0 rgba(99,102,241,0.13);
+        /* Hilangkan transform dan efek hover berlebihan */
+    }
+    .book-title-link {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.18s;
+    }
+    .book-title-link::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0; bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(90deg, #6366f1 60%, #a5b4fc 100%);
+        border-radius: 2px;
+        transition: width 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    .book-title-link:hover {
+        color: #a5b4fc;
+    }
+    .book-title-link:hover::after {
+        width: 100%;
+    }
+    .glass-header, .fav-header-icon, .fav-header-title, .fav-header-desc {
+        all: unset;
+    }
+    .simple-fav-header {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .simple-fav-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 0.2rem;
+        line-height: 1.1;
+    }
+    .simple-fav-desc {
+        color: #a5b4fc;
+        font-size: 1.08rem;
+        margin-bottom: 0;
+        font-weight: 400;
+    }
+    @media (max-width: 700px) {
+        .simple-fav-header { margin-top: 1.2rem; margin-bottom: 1.2rem; }
+        .simple-fav-title { font-size: 1.2rem; }
+    }
 </style>
 <canvas class="meteor-bg"></canvas>
 <div class="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-2 sm:px-4 relative z-10">
-    <div class="glass-header mb-8 mx-auto" style="max-width:900px;">
-        <h1 class="text-2xl font-extrabold text-white tracking-tight mb-1">Favorit Saya</h1>
-        <p class="text-zinc-400 text-sm mb-0.5">Koleksi buku yang paling kamu sukai.</p>
+    <div class="simple-fav-header">
+        <div class="simple-fav-title">Favorit Saya</div>
+        <div class="simple-fav-desc">Koleksi buku yang paling kamu sukai.</div>
     </div>
     <div class="fav-masonry w-full">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             @forelse($books as $book)
-            <div class="glass-book flex flex-col overflow-hidden hover:shadow-xl group relative">
+            <div class="glass-book flex flex-col overflow-hidden group relative">
                 <div class="relative w-full h-72 bg-zinc-800 flex items-center justify-center overflow-hidden ring-1 ring-zinc-800">
                     <div class="absolute top-3 left-3 flex flex-col gap-2 z-10">
-                        @if($book->genre)
-                            <span class="book-badge genre">{{ $book->genre }}</span>
-                        @endif
+                        {{-- Badge genre dihapus --}}
                         @if($book->created_at && $book->created_at->gt(now()->subDays(7)))
                             <span class="book-badge baru">Baru</span>
                         @endif
                     </div>
-                    @if($book->year)
-                        <span class="absolute top-3 right-3 book-badge year z-10">{{ $book->year }}</span>
-                    @endif
+                    {{-- Badge tahun dihapus --}}
                     <span class="absolute bottom-3 right-3 z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ef4444" stroke="#ef4444" stroke-width="2" class="w-8 h-8 heart-glow">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75a5.25 5.25 0 0 1 4.25 8.5L12 21l-8.75-8.75A5.25 5.25 0 0 1 7.5 3.75c1.5 0 2.75.75 3.5 2 .75-1.25 2-2 3.5-2z" />
@@ -135,7 +223,7 @@
                     @endif
                 </div>
                 <div class="p-6 flex-1 flex flex-col">
-                    <a href="{{ route('books.show', $book) }}" class="font-bold text-xl text-white leading-tight mb-1 truncate hover:underline">{{ $book->title }}</a>
+                    <a href="{{ route('books.show', $book) }}" class="book-title-link font-bold text-xl text-white leading-tight mb-1 truncate">{{ $book->title }}</a>
                     <div class="text-zinc-400 text-sm italic mb-1 truncate">{{ $book->author }}</div>
                     <div class="flex items-center gap-1 mb-4">
                         <span class="book-rating">★</span>
