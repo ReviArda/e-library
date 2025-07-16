@@ -80,9 +80,7 @@ e-library/
 3. Klik **Simpan**. Buku akan muncul di daftar buku.
    <img width="1887" height="946" alt="image" src="https://github.com/user-attachments/assets/113706a1-f5a9-4eac-9cd5-2f4169061f91" />
 
-
-
-
+---
 ### Mengedit Buku
 1. Pada kartu buku, klik ikon **pensil/edit**.
    <img width="275" height="491" alt="image" src="https://github.com/user-attachments/assets/3cf988db-aa06-4fe6-9478-8193cbf1868b" />
@@ -90,10 +88,7 @@ e-library/
 2. Ubah data yang diinginkan pada form edit.
 3. Klik **Simpan** untuk memperbarui data buku.
 
-
-
-
-
+---
 ### Menghapus Buku
 1. Pada kartu buku, klik ikon **hapus (X)**.
    <img width="275" height="491" alt="image" src="https://github.com/user-attachments/assets/87306641-d6e2-4740-b72b-103fe28a95ac" />
