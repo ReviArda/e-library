@@ -58,7 +58,7 @@
 
 @layer components {
   .neon-btn {
-    @apply bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white font-bold rounded-xl shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-neon focus:outline-none focus:ring-2 focus:ring-pink-400;
+    @apply bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500 text-white font-bold rounded-xl shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-400;
     box-shadow: 0 0 8px #6366f1, 0 0 16px #ec4899, 0 0 2px #a21caf;
   }
   .glass-card {
