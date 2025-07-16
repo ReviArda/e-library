@@ -64,22 +64,34 @@ e-library/
 1. Pengguna membuka halaman utama dan memilih **Login**.
    <img width="1901" height="938" alt="image" src="https://github.com/user-attachments/assets/ef116d38-0363-4e41-bde6-7c4e4af9115c" />
 
-3. Masukkan email & password, lalu klik **Masuk**.
-4. Jika login berhasil, pengguna diarahkan ke halaman **Dashboard** yang menampilkan statistik, aktivitas, dan menu navigasi utama.
+2. Masukkan email & password, lalu klik **Masuk** atau jika belum punya akun bisa register.
+   <img width="1898" height="949" alt="Screenshot 2025-07-17 004857" src="https://github.com/user-attachments/assets/ec09134b-3568-4d80-8ffb-0bc81ed02541" />
+
+3. Jika login berhasil, pengguna diarahkan ke halaman **Dashboard** yang menampilkan statistik, aktivitas, dan menu navigasi utama.
+   <img width="1902" height="946" alt="Screenshot 2025-07-17 004952" src="https://github.com/user-attachments/assets/e05ce5dc-f77d-4939-86ca-feed83b768f8" />
+
 
 ## Alur CRUD Buku
 ### Menambah Buku
 1. Klik tombol **Tambah** di dashboard atau halaman buku.
 2. Isi form data buku (judul, penulis, cover, genre, tahun, dll).
+   <img width="1866" height="952" alt="image" src="https://github.com/user-attachments/assets/8d1520f0-b539-43c3-8a44-ef454053ff3e" />
+
 3. Klik **Simpan**. Buku akan muncul di daftar buku.
+   <img width="1887" height="946" alt="image" src="https://github.com/user-attachments/assets/113706a1-f5a9-4eac-9cd5-2f4169061f91" />
+
 
 ### Mengedit Buku
 1. Pada kartu buku, klik ikon **pensil/edit**.
+   <img width="275" height="491" alt="image" src="https://github.com/user-attachments/assets/3cf988db-aa06-4fe6-9478-8193cbf1868b" />
+
 2. Ubah data yang diinginkan pada form edit.
 3. Klik **Simpan** untuk memperbarui data buku.
 
 ### Menghapus Buku
 1. Pada kartu buku, klik ikon **hapus (X)**.
+   <img width="275" height="491" alt="image" src="https://github.com/user-attachments/assets/87306641-d6e2-4740-b72b-103fe28a95ac" />
+
 2. Konfirmasi penghapusan pada dialog yang muncul.
 3. Buku akan dihapus dari daftar.
 
