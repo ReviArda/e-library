@@ -29,6 +29,7 @@
 3. **Install dependency frontend**
    ```bash
    npm install
+   npm run build
    npm run dev
    ```
 4. **Jalankan server**
@@ -61,8 +62,10 @@ e-library/
 
 ## Alur Login hingga ke Dashboard
 1. Pengguna membuka halaman utama dan memilih **Login**.
-2. Masukkan email & password, lalu klik **Masuk**.
-3. Jika login berhasil, pengguna diarahkan ke halaman **Dashboard** yang menampilkan statistik, aktivitas, dan menu navigasi utama.
+   <img width="1901" height="938" alt="image" src="https://github.com/user-attachments/assets/ef116d38-0363-4e41-bde6-7c4e4af9115c" />
+
+3. Masukkan email & password, lalu klik **Masuk**.
+4. Jika login berhasil, pengguna diarahkan ke halaman **Dashboard** yang menampilkan statistik, aktivitas, dan menu navigasi utama.
 
 ## Alur CRUD Buku
 ### Menambah Buku
